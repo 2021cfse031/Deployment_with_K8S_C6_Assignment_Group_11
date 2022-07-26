@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-ms
+  labels:
+    app: student-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: student-microservice
+  template:
+    metadata:
+      labels:
+        app: student-microservice
+    spec:
+      containers:
+        - image: kiranbs13/studentmicro:latest
+          name: student-microservice
+          ports:
+            - containerPort: 8000

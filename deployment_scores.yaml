@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scores-ms
+  labels:
+    app: scores-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: scores-microservice
+  template:
+    metadata:
+      labels:
+        app: scores-microservice
+    spec:
+      containers:
+        - image: kiranbs13/scoresmicro:latest
+          name: scores-microservice
+          ports:
+            - containerPort: 7000
